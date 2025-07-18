@@ -145,7 +145,7 @@ This model is the foundation of many smart systems:
 
 ## 🎥 Demo & Results
 
-*(Insert screenshots or video demo links)*
+![Image Alt]()
 
 - ✅ App switch turns ON LED on GPIO14
 - ✅ Physical button press:
