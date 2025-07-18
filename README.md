@@ -7,8 +7,8 @@
 This mini IoT project demonstrates **two-way real-time communication** between hardware and a mobile app using the **MQTT protocol** and the **PubSubClient** library on an **ESP32 microcontroller**.
 
 The system allows:
-- A **virtual switch** in the mobile app (publisher) to control a **hardware LED** on GPIO14 (subscriber).
-- A **physical switch** on GPIO0 (publisher) to control a **virtual LED** in the mobile app (subscriber), and simultaneously light up a second hardware LED on GPIO23 as visual feedback.
+- A **virtual switch** in the mobile app (publisher) to control a **hardware LED** (subscriber).
+- A **physical switch** (publisher) to control a **virtual LED** in the mobile app (subscriber), and simultaneously light up a second hardware LED on as visual feedback.
 
 This project reflects a typical **Internet of Things (IoT)** use case with remote device control, state synchronization, and cloud-based messaging using **MQTT** — a lightweight and efficient protocol ideal for real-time systems.
 
@@ -18,8 +18,8 @@ This project reflects a typical **Internet of Things (IoT)** use case with remot
 
 - ESP32 board
 - 2 LEDs
-  - One controlled by mobile app (GPIO14)
-  - One as button feedback (GPIO23)
+- One controlled by mobile app (GPIO14)
+- One as button feedback (GPIO23)
 - Push button switch with pull-up resistor (GPIO0)
 - Resistors: 220Ω (for LEDs)
 - Breadboard, jumper wires
@@ -54,11 +54,11 @@ This project reflects a typical **Internet of Things (IoT)** use case with remot
 
 ### 🔄 Message Flow
 
-- **Publisher (App)** sends `1` or `0` to `esp32/ledControl`
-- **Subscriber (ESP32)** listens and controls LED on GPIO14
-- **Publisher (ESP32)** sends `1` or `0` to `esp32/buttonStatus`
-- **Subscriber (App)** listens and updates virtual LED
-- **Feedback LED** on GPIO23 is also toggled as local confirmation
+- **Publisher (App)** *(QoS 0)* sends `1` or `0` to `esp32/ledControl`
+- **Subscriber (ESP32)** *(QoS 0)* listens and controls LED
+- **Publisher (ESP32)** *(QoS 0)* sends `1` or `0` to `esp32/buttonStatus`
+- **Subscriber (App)** *(QoS 0)* listens and updates virtual LED
+- **Feedback LED** on GPIO23 is also toggled as local confirmation between the physical push button and the app LED
 
 ---
 
@@ -68,7 +68,7 @@ MQTT (IOT Message Queuing Telemetry Transport) is a lightweight **publish/subscr
 
 1. **App as Publisher:**
    - The switch widget in the **IoT MQTT Panel** sends a message (`"1"` or `"0"`) to topic `esp32/ledControl`.
-   - This message goes through the **MQTT broker** (like `test.mosquitto.org`).
+   - This message goes through the **MQTT broker** (like `broker.emqx.io`).
 
 2. **ESP32 as Subscriber:**
    - ESP32 is subscribed to `esp32/ledControl`.
