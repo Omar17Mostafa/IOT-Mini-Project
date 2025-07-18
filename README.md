@@ -145,7 +145,7 @@ This model is the foundation of many smart systems:
 
 ## 🎥 Demo & Results
 
-![Image Alt]()
+![Image Alt](https://github.com/Omar17Mostafa/IOT-Mini-Project/blob/9cbb44372349c33de0a4783d5b8e4ff0d78749a2/Simulation%20Circuit%20.png)
 
 - ✅ App switch turns ON LED on GPIO14
 - ✅ Physical button press:
