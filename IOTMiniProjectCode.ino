@@ -15,7 +15,6 @@ PubSubClient client(wificlient);
 // Pin Definitions
 // ==========================
 #define LED_GREEN 14   // LED controlled via mobile app (MQTT)
-#define LED_RED   23   // LED indicates button (IR sensor) status
 #define BTN_PIN    0   // Simulated IR sensor (button input)
 
 long long IR_TIME;
@@ -54,7 +53,6 @@ void callback(char topic[], byte* payload, unsigned int length) {
 // ==========================
 void setup() {
   pinMode(LED_GREEN, OUTPUT);
-  pinMode(LED_RED, OUTPUT);
   pinMode(BTN_PIN, INPUT);
 
   WiFi.begin(ssid, pass);
@@ -101,12 +99,10 @@ void loop() {
     if (digitalRead(BTN_PIN) == LOW) {
       client.publish("/sectorb5/omar/led", "on");
       Serial.println("IR_Sensor on");
-      digitalWrite(LED_RED, HIGH);  // Turn on feedback LED
     }
     else if (digitalRead(BTN_PIN) == HIGH) {
       client.publish("/sectorb5/omar/led", "off");
       Serial.println("IR_Sensor off");
-      digitalWrite(LED_RED, LOW);   // Turn off feedback LED
     }
     // Reset timer
     IR_TIME = millis();
