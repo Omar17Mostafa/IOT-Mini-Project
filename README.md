@@ -8,7 +8,7 @@ This mini IoT project demonstrates **two-way real-time communication** between h
 
 The system allows:
 - A **virtual switch** in the mobile app (publisher) to control a **hardware LED** (subscriber).
-- A **physical switch** (publisher) to control a **virtual LED** in the mobile app (subscriber), and simultaneously light up a second hardware LED on as visual feedback.
+- A **physical switch** (publisher) to control a **virtual LED** in the mobile app (subscriber).
 
 This project reflects a typical **Internet of Things (IoT)** use case with remote device control, state synchronization, and cloud-based messaging using **MQTT** — a lightweight and efficient protocol ideal for real-time systems.
 
@@ -17,7 +17,7 @@ This project reflects a typical **Internet of Things (IoT)** use case with remot
 ## 🔌 Components
 
 - ESP32 board
-- 2 LEDs
+- LED
 - One controlled by mobile app (GPIO14)
 - One as button feedback (GPIO23)
 - Push button switch with pull-up resistor (GPIO0)
@@ -41,7 +41,6 @@ This project reflects a typical **Internet of Things (IoT)** use case with remot
 
 - The button is connected with a **pull-up resistor** to 3.3V.
 - When the button is **pressed**, it pulls GPIO0 **LOW** (active-low logic).
-- The feedback LED on GPIO23 gives **local confirmation** of the button press.
 
 ---
 
@@ -58,7 +57,6 @@ This project reflects a typical **Internet of Things (IoT)** use case with remot
 - **Subscriber (ESP32)** *(QoS 0)* listens and controls LED
 - **Publisher (ESP32)** *(QoS 0)* sends `1` or `0` to `esp32/buttonStatus`
 - **Subscriber (App)** *(QoS 0)* listens and updates virtual LED
-- **Feedback LED** on GPIO23 is also toggled as local confirmation between the physical push button and the app LED
 
 ---
 
@@ -163,7 +161,6 @@ This model is the foundation of many smart systems:
 - Used **pull-up logic** for GPIO0 and handled edge detection in code.
 - Built a reliable IoT system that could scale into **real-world smart devices**.
 - Gained experience with **mobile-to-hardware integration** using only free tools.
-- Realized the importance of **visual confirmation mechanisms** like the feedback LED for debugging and user feedback.
 
 ---
 
